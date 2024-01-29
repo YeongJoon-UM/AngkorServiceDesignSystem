@@ -15,6 +15,7 @@ public struct ASDSButton<Label: View>: View {
     private var buttonState: ButtonState
     private let buttonWidth: CGFloat?
     
+    /// Width 지정 버튼
     public init(action: @escaping () -> Void, @ViewBuilder label: () -> Label, buttonType: ButtonType, buttonSize: ButtonSize, buttonState: ButtonState, buttonWidth: CGFloat) {
         self.action = action
         self.label = label()
@@ -24,6 +25,7 @@ public struct ASDSButton<Label: View>: View {
         self.buttonWidth = buttonWidth
     }
     
+    /// Width 미지정 버튼 (Hug 방식)
     public init(action: @escaping () -> Void, @ViewBuilder label: () -> Label, buttonType: ButtonType, buttonSize: ButtonSize, buttonState: ButtonState) {
         self.action = action
         self.label = label()
@@ -110,14 +112,14 @@ extension ASDSButton {
                 if buttonState == .Progress {
                     ASDSButtonProgressView(color: Color.ASDS.white, size: buttonSize == .Xsmall ? 16 : buttonSize == .Small ? 20 : 24)
                         .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
-                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
+                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height, maxHeight: buttonSize.height)
                         .background(Color.ASDS.primary)
                         .cornerRadius(cornerRadius)
                         .padding(.horizontal, buttonSize != .Xlarge && buttonWidth == .infinity ? 16 : 0)
                 } else {
                     configuration.label
                         .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
-                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
+                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height, maxHeight: buttonSize.height)
                         .ASDSFont(fontType, color: textColor)
                         .background(buttonState == .Disabled ? Color.ASDS.gray03 : configuration.isPressed ? Color.ASDS.primaryDark : Color.ASDS.primary)
                         .cornerRadius(cornerRadius)
@@ -127,14 +129,14 @@ extension ASDSButton {
                 if buttonState == .Progress {
                     ASDSButtonProgressView(color: Color.ASDS.white, size: buttonSize == .Xsmall ? 16 : buttonSize == .Small ? 20 : 24)
                         .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
-                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
+                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height, maxHeight: buttonSize.height)
                         .background(Color.ASDS.primary)
                         .cornerRadius(cornerRadius)
                         .padding(.horizontal, buttonSize != .Xlarge && buttonWidth == .infinity ? 16 : 0)
                 } else {
                     configuration.label
                         .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
-                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
+                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height, maxHeight: buttonSize.height)
                         .ASDSFont(fontType, color: textColor)
                         .background(buttonState == .Disabled ? Color.ASDS.gray06 : configuration.isPressed ? Color.ASDS.gray03 : Color.ASDS.gray05)
                         .cornerRadius(cornerRadius)
@@ -144,7 +146,7 @@ extension ASDSButton {
                 if buttonState == .Progress {
                     ASDSButtonProgressView(color: Color.ASDS.primary, size: buttonSize == .Xsmall ? 16 : buttonSize == .Small ? 20 : 24)
                         .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
-                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
+                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height, maxHeight: buttonSize.height)
                         .background(Color.ASDS.backgroundElevatedPrimary)
                         .overlay(RoundedRectangle(cornerRadius: cornerRadius).strokeBorder(Color.ASDS.primary, lineWidth: 1))
                         .cornerRadius(cornerRadius)
@@ -152,7 +154,7 @@ extension ASDSButton {
                 } else {
                     configuration.label
                         .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
-                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
+                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height, maxHeight: buttonSize.height)
                         .ASDSFont(fontType, color: textColor)
                         .background(buttonState == .Disabled ? Color.ASDS.backgroundElevatedPrimary : configuration.isPressed ? Color.ASDS.primaryLight : Color.ASDS.backgroundElevatedPrimary)
                         .cornerRadius(cornerRadius)
@@ -163,7 +165,7 @@ extension ASDSButton {
                 if buttonState == .Progress {
                     ASDSButtonProgressView(color: Color.ASDS.gray02, size: buttonSize == .Xsmall ? 16 : buttonSize == .Small ? 20 : 24)
                         .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
-                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
+                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height, maxHeight: buttonSize.height)
                         .background(Color.ASDS.backgroundElevatedPrimary)
                         .overlay(RoundedRectangle(cornerRadius: cornerRadius).strokeBorder(Color.ASDS.gray05, lineWidth: 1))
                         .cornerRadius(cornerRadius)
@@ -171,7 +173,7 @@ extension ASDSButton {
                 } else {
                     configuration.label
                         .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
-                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
+                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height, maxHeight: buttonSize.height)
                         .ASDSFont(fontType, color: buttonState == .Disabled ? Color.ASDS.labelTertiary : configuration.isPressed ? Color.ASDS.labelSecondary : textColor)
                         .background(Color.ASDS.backgroundElevatedPrimary)
                         .cornerRadius(cornerRadius)
@@ -182,13 +184,13 @@ extension ASDSButton {
                 if buttonState == .Progress {
                     ASDSButtonProgressView(color: Color.ASDS.gray02, size: buttonSize == .Xsmall ? 16 : buttonSize == .Small ? 20 : 24)
                         .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
-                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
+                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height, maxHeight: buttonSize.height)
                         .cornerRadius(cornerRadius)
                         .padding(.horizontal, buttonSize != .Xlarge && buttonWidth == .infinity ? 16 : 0)
                 } else {
                     configuration.label
                         .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
-                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
+                        .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height, maxHeight: buttonSize.height)
                         .contentShape(RoundedRectangle(cornerRadius: 8))
                         .ASDSFont(fontType, color: buttonState == .Disabled ? Color.ASDS.labelTertiary : configuration.isPressed ? Color.ASDS.labelSecondary : textColor)
                         .cornerRadius(cornerRadius)
@@ -205,15 +207,12 @@ extension ASDSButton {
         let color: Color
         let size: CGFloat
         
-        
         init(color: Color, size: CGFloat) {
             self.color = color
             self.size = size
         }
         
         var body: some View {
-            
-            
             ZStack {
                 Circle()
                     .stroke(color.opacity(0.3), lineWidth: 3)
@@ -276,13 +275,13 @@ extension ASDSButton {
     }
 
     public enum ButtonState {
-        // 기본 상태
+        /// 기본 상태
         case Default
-        // 활성화 상태
+        /// 활성화 상태
         case Active
-        // 비활성화 상태
+        /// 비활성화 상태
         case Disabled
-        // 로딩 상태
+        /// 로딩 상태
         case Progress
     }
 }
