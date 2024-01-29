@@ -38,7 +38,7 @@ extension Color {
         public static let blue = Color("ASDSBlue")
         public static let indigo = Color("ASDSIndigo")
         public static let purple = Color("ASDSPurple")
-        public static let pinkAS = Color("ASDSPink")
+        public static let pink = Color("ASDSPink")
     }
 }
 
