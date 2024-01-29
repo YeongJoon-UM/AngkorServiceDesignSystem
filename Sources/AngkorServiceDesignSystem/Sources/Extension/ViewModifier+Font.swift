@@ -7,6 +7,32 @@
 
 import SwiftUI
 
+private struct ASDSFontName {
+    static let kantumruyProRegular = "KantumruyPro-Regular"
+    static let kantumruyProMedium = "KantumruyPro-Medium"
+    
+    static var all: [String] { [kantumruyProRegular, kantumruyProMedium] }
+}
+
+public struct ASDSFonts {
+    
+    public static func registerASDSFonts() {
+        ASDSFontName.all.forEach { font in
+            guard let url = Bundle.module.url(forResource: font, withExtension: "ttf") else { return }
+            CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
+        }
+    }
+}
+
+public extension View {
+    /// Attach this to any Xcode Preview's view to have custom fonts displayed
+    /// Note: Not needed for the actual app
+    func loadCustomFonts() -> some View {
+        ASDSFonts.registerASDSFonts()
+        return self
+    }
+}
+
 public struct ASDSFontModifier: ViewModifier {
     var font: ASDSFontType
     var color: Color
@@ -14,14 +40,14 @@ public struct ASDSFontModifier: ViewModifier {
     public func body(content: Content) -> some View {
         if #available(iOS 16.0, *) {
             content
-                .font(.custom(font.isMedium ? "KantumruyPro-Medium" : "KantumruyPro-Regular", size: font.size))
+                .font(.custom(font.isMedium ? ASDSFontName.kantumruyProMedium : ASDSFontName.kantumruyProRegular, size: font.size))
                 .foregroundColor(color)
                 .kerning((font != .BodyXsmall || font != .Caption) ? font.size * -0.03 : 0)
                 .lineSpacing(font.lineSpacing())
                 .padding(.vertical, (font.lineSpacing() / 2))
         } else {
             content
-                .font(.custom(font.isMedium ? "KantumruyPro-Medium" : "KantumruyPro-Regular", size: font.size))
+                .font(.custom(font.isMedium ? ASDSFontName.kantumruyProMedium : ASDSFontName.kantumruyProRegular, size: font.size))
                 .foregroundColor(color)
                 .lineSpacing(font.lineSpacing())
                 .padding(.vertical, (font.lineSpacing() / 2))
