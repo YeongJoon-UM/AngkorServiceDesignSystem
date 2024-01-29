@@ -109,14 +109,14 @@ extension ASDSButton {
             case .Basic:
                 if buttonState == .Progress {
                     ASDSButtonProgressView(color: Color.ASDS.white, size: buttonSize == .Xsmall ? 16 : buttonSize == .Small ? 20 : 24)
-                        .padding(.horizontal, buttonWidth != nil ? labelHorizontalPadding : 0)
+                        .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
                         .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
                         .background(Color.ASDS.primary)
                         .cornerRadius(cornerRadius)
                         .padding(.horizontal, buttonSize != .Xlarge && buttonWidth == .infinity ? 16 : 0)
                 } else {
                     configuration.label
-                        .padding(.horizontal, buttonWidth != nil ? labelHorizontalPadding : 0)
+                        .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
                         .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
                         .ASDSFont(fontType, color: textColor)
                         .background(buttonState == .Disabled ? Color.ASDS.gray03 : configuration.isPressed ? Color.ASDS.primaryDark : Color.ASDS.primary)
@@ -126,14 +126,14 @@ extension ASDSButton {
             case .BasicUnaccent:
                 if buttonState == .Progress {
                     ASDSButtonProgressView(color: Color.ASDS.white, size: buttonSize == .Xsmall ? 16 : buttonSize == .Small ? 20 : 24)
-                        .padding(.horizontal, buttonWidth != nil ? labelHorizontalPadding : 0)
+                        .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
                         .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
                         .background(Color.ASDS.primary)
                         .cornerRadius(cornerRadius)
                         .padding(.horizontal, buttonSize != .Xlarge && buttonWidth == .infinity ? 16 : 0)
                 } else {
                     configuration.label
-                        .padding(.horizontal, buttonWidth != nil ? labelHorizontalPadding : 0)
+                        .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
                         .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
                         .ASDSFont(fontType, color: textColor)
                         .background(buttonState == .Disabled ? Color.ASDS.gray06 : configuration.isPressed ? Color.ASDS.gray03 : Color.ASDS.gray05)
@@ -143,7 +143,7 @@ extension ASDSButton {
             case .LineAccent:
                 if buttonState == .Progress {
                     ASDSButtonProgressView(color: Color.ASDS.primary, size: buttonSize == .Xsmall ? 16 : buttonSize == .Small ? 20 : 24)
-                        .padding(.horizontal, buttonWidth != nil ? labelHorizontalPadding : 0)
+                        .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
                         .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
                         .background(Color.ASDS.backgroundElevatedPrimary)
                         .overlay(RoundedRectangle(cornerRadius: cornerRadius).strokeBorder(Color.ASDS.primary, lineWidth: 1))
@@ -151,7 +151,7 @@ extension ASDSButton {
                         .padding(.horizontal, buttonSize != .Xlarge && buttonWidth == .infinity ? 16 : 0)
                 } else {
                     configuration.label
-                        .padding(.horizontal, buttonWidth != nil ? labelHorizontalPadding : 0)
+                        .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
                         .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
                         .ASDSFont(fontType, color: textColor)
                         .background(buttonState == .Disabled ? Color.ASDS.backgroundElevatedPrimary : configuration.isPressed ? Color.ASDS.primaryLight : Color.ASDS.backgroundElevatedPrimary)
@@ -162,7 +162,7 @@ extension ASDSButton {
             case .Line:
                 if buttonState == .Progress {
                     ASDSButtonProgressView(color: Color.ASDS.gray02, size: buttonSize == .Xsmall ? 16 : buttonSize == .Small ? 20 : 24)
-                        .padding(.horizontal, buttonWidth != nil ? labelHorizontalPadding : 0)
+                        .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
                         .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
                         .background(Color.ASDS.backgroundElevatedPrimary)
                         .overlay(RoundedRectangle(cornerRadius: cornerRadius).strokeBorder(Color.ASDS.gray05, lineWidth: 1))
@@ -170,7 +170,7 @@ extension ASDSButton {
                         .padding(.horizontal, buttonSize != .Xlarge && buttonWidth == .infinity ? 16 : 0)
                 } else {
                     configuration.label
-                        .padding(.horizontal, buttonWidth != nil ? labelHorizontalPadding : 0)
+                        .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
                         .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
                         .ASDSFont(fontType, color: buttonState == .Disabled ? Color.ASDS.labelTertiary : configuration.isPressed ? Color.ASDS.labelSecondary : textColor)
                         .background(Color.ASDS.backgroundElevatedPrimary)
@@ -181,13 +181,13 @@ extension ASDSButton {
             case .Text:
                 if buttonState == .Progress {
                     ASDSButtonProgressView(color: Color.ASDS.gray02, size: buttonSize == .Xsmall ? 16 : buttonSize == .Small ? 20 : 24)
-                        .padding(.horizontal, buttonWidth != nil ? labelHorizontalPadding : 0)
+                        .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
                         .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
                         .cornerRadius(cornerRadius)
                         .padding(.horizontal, buttonSize != .Xlarge && buttonWidth == .infinity ? 16 : 0)
                 } else {
                     configuration.label
-                        .padding(.horizontal, buttonWidth != nil ? labelHorizontalPadding : 0)
+                        .padding(.horizontal, buttonWidth == nil ? labelHorizontalPadding : 0)
                         .frame(minWidth: buttonMinWidth, maxWidth: buttonWidth, minHeight: buttonSize.height)
                         .contentShape(RoundedRectangle(cornerRadius: 8))
                         .ASDSFont(fontType, color: buttonState == .Disabled ? Color.ASDS.labelTertiary : configuration.isPressed ? Color.ASDS.labelSecondary : textColor)
