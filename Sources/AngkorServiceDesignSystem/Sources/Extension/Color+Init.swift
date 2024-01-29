@@ -9,7 +9,7 @@ import SwiftUI
 
 extension Color {
     public class ASDS {
-        public static let primary = Color("Primary", bundle: Bundle.module)
+        public static let primary = Color("Primary", bundle: Bundle.main)
         public static let primaryLight = Color("PrimaryLight", bundle: Bundle.module)
         public static let primaryDark = Color("PrimaryDark", bundle: Bundle.module)
         public static let backgroundPrimary = Color("BackgroundPrimary", bundle: Bundle.module)
