@@ -22,8 +22,7 @@ let package = Package(
         .target(
             name: "AngkorServiceDesignSystem",
             resources: [
-                .process("Resources/Fonts"),
-                .process("Resources/Colors")
+                .process("Resources")
             ]),
         .testTarget(
             name: "AngkorServiceDesignSystemTests",
