@@ -47,18 +47,18 @@ public struct ASDSButton<Label: View>: View {
 
 
 extension ASDSButton {
-    public struct ASDSButtonStyle: ButtonStyle {
-        private let buttonType: ButtonType
-        private let buttonSize: ButtonSize
-        private var buttonState: ButtonState
-        private let buttonWidth: CGFloat?
-        private let buttonMinWidth: CGFloat
-        private let labelHorizontalPadding: CGFloat
-        private let fontType: ASDSFontType
+    private struct ASDSButtonStyle: ButtonStyle {
+        let buttonType: ButtonType
+        let buttonSize: ButtonSize
+        var buttonState: ButtonState
+        let buttonWidth: CGFloat?
+        let buttonMinWidth: CGFloat
+        let labelHorizontalPadding: CGFloat
+        let fontType: ASDSFontType
         
-        private let cornerRadius: CGFloat
+        let cornerRadius: CGFloat
         
-        private var textColor: Color {
+        var textColor: Color {
             switch buttonState {
             case .Default:
                 return Color.ASDS.labelPrimary
@@ -71,7 +71,7 @@ extension ASDSButton {
             }
         }
         
-        public init(buttonType: ButtonType, buttonSize: ButtonSize, buttonState: ButtonState, buttonWidth: CGFloat?) {
+        init(buttonType: ButtonType, buttonSize: ButtonSize, buttonState: ButtonState, buttonWidth: CGFloat?) {
             self.buttonType = buttonType
             self.buttonSize = buttonSize
             self.buttonState =  buttonState
@@ -106,7 +106,7 @@ extension ASDSButton {
             }
         }
         
-        public func makeBody(configuration: Self.Configuration) -> some View {
+        func makeBody(configuration: Self.Configuration) -> some View {
             switch buttonType {
             case .Basic:
                 if buttonState == .Progress {
