@@ -15,7 +15,6 @@ private struct ASDSFontName {
 }
 
 public struct ASDSFonts {
-    
     public static func registerASDSFonts() {
         ASDSFontName.all.forEach { font in
             guard let url = Bundle.module.url(forResource: font, withExtension: "ttf") else { return }
